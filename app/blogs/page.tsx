@@ -29,14 +29,14 @@ export default function Blog() {
             excerpt: "How drones are evolving from sci-fi gadgets to indispensable partners in daily life — from instant deliveries to saving lives.",
             author: "Tech Team",
             date: "2024-09-15",
-            category: "Robotics",
+            category: "Drones",
             readTime: "5 min read",
             linkedinUrl: "https://www.linkedin.com/pulse/future-drones-everyday-life-from-sci-fi-why-roberon-ccbpf",
             image: "/images/blog_drone.jpeg"
         }
     ];
 
-    const categories = ['All', 'Robotics', 'Tutorials'];
+    const categories = ['All', 'Drones', 'Robotics', 'Tutorials'];
 
     const filteredPosts = selectedCategory === 'All' 
         ? blogPosts 
@@ -134,7 +134,7 @@ export default function Blog() {
 
                     {/* Category Filter */}
                     <motion.div
-                        className="flex flex-wrap justify-center gap-4 mb-12"
+                        className="flex flex-wrap justify-center gap-4 mb-12 overflow-visible"
                         initial={{ y: 30, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
@@ -202,31 +202,6 @@ export default function Blog() {
                                             ease: "easeInOut"
                                         }}
                                     />
-
-                                    {/* Tech Icon
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        {post.category === 'Robotics' ? (
-                                            <motion.svg 
-                                                className="w-20 h-20 text-red-400 opacity-60"
-                                                fill="currentColor" 
-                                                viewBox="0 0 24 24"
-                                                whileHover={{ scale: 1.1, rotate: 360 }}
-                                                transition={{ duration: 0.8 }}
-                                            >
-                                                <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5A2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5a2.5 2.5 0 0 0 2.5 2.5a2.5 2.5 0 0 0 2.5-2.5a2.5 2.5 0 0 0-2.5-2.5Z"/>
-                                            </motion.svg>
-                                        ) : (
-                                            <motion.svg 
-                                                className="w-20 h-20 text-red-400 opacity-60"
-                                                fill="currentColor" 
-                                                viewBox="0 0 24 24"
-                                                whileHover={{ scale: 1.1 }}
-                                                transition={{ duration: 0.5 }}
-                                            >
-                                                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
-                                            </motion.svg>
-                                        )}
-                                    </div> */}
 
                                     {/* Shine Effect on Hover */}
                                     <motion.div

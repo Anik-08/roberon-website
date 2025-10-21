@@ -139,7 +139,7 @@ export default function Products() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               onClick={() => scroll('left')}
-              className="absolute z-10 left-0 top-1/2 -translate-y-1/2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-full p-4 shadow-lg shadow-red-500/30 transition-all duration-300 hover:scale-110 hover:shadow-red-500/50 -translate-x-1/2"
+              className="absolute z-10 left-0 cursor-target top-1/2 -translate-y-1/2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-full p-4 shadow-lg shadow-red-500/30 transition-all duration-300 hover:scale-110 hover:shadow-red-500/50 -translate-x-1/2"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
@@ -151,7 +151,7 @@ export default function Products() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               onClick={() => scroll('right')}
-              className="absolute right-0 z-10 top-1/2 -translate-y-1/2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-full p-4 shadow-lg shadow-red-500/30 transition-all duration-300 hover:scale-110 hover:shadow-red-500/50 translate-x-1/2"
+              className="absolute right-0 cursor-target z-10 top-1/2 -translate-y-1/2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-full p-4 shadow-lg shadow-red-500/30 transition-all duration-300 hover:scale-110 hover:shadow-red-500/50 translate-x-1/2"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
