@@ -116,9 +116,9 @@ export default function Navbar() {
           >
             Contact Us
           </button>
-          <div className="bg-slate-800 cursor-target w-12 h-10 rounded-full border border-white flex items-center justify-center top-4 right-0 z-50  shadow-lg hover:scale-105 transition-transform" onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
+          {/* <div className="bg-slate-800 cursor-target w-12 h-10 rounded-full border border-white flex items-center justify-center top-4 right-0 z-50  shadow-lg hover:scale-105 transition-transform" onClick={() => router.push('https://we-gift-3-d.vercel.app/')}>
             <Image src='/wegift logo.png' alt='WeGift 3D logo' height={100} width={100} className='w-auto h-auto' />
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -189,7 +189,7 @@ export default function Navbar() {
             >
               Contact Us
             </button>
-            <button 
+            {/* <button 
               className='flex items-center justify-start w-full text-left text-white py-2 gap-2' 
               onClick={() => {
                 window.location.href = 'https://we-gift-3-d.vercel.app/';
@@ -199,7 +199,7 @@ export default function Navbar() {
               <Image src='/wegift logo.png' alt='WeGift 3D logo' height={32} width={32} className='w-8 h-8 object-contain' />
               <p className='text-md'>WeGift 3D</p>
               <IoIosArrowRoundForward size={24}/>
-            </button>
+            </button> */}
           </div>
         </div>
       )}

@@ -104,7 +104,7 @@ export default function Products() {
 
       <div className="max-w-7xl mx-auto relative">
         {/* Section Header */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
@@ -129,11 +129,11 @@ export default function Products() {
           <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
             Precision-engineered products that push the boundaries of additive manufacturing
           </p>
-        </motion.div>
+        </motion.div> */}
 
         {/* Products Carousel */}
-        <div className="relative">
-          {/* Navigation Buttons */}
+        {/* <div className="relative">
+          
           {showLeftButton && (
             <motion.button
               initial={{ opacity: 0 }}
@@ -160,7 +160,7 @@ export default function Products() {
           )}
 
           {/* Scrollable Container */}
-          <div
+          {/* <div
             ref={scrollContainerRef}
             onScroll={handleScroll}
             className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 px-4"
@@ -182,10 +182,10 @@ export default function Products() {
                 >
                   <div className="relative h-full bg-gradient-to-b from-zinc-900/90 to-black/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-zinc-800/50 hover:border-red-500/50 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-red-500/20">
                     
-                    {/* Top Accent */}
+
                     <div className="h-1 bg-gradient-to-r from-red-600 via-red-500 to-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
 
-                    {/* Image Container */}
+
                     <div className="relative h-64 overflow-hidden bg-zinc-900">
                       <Image
                         src={product.image}
@@ -194,15 +194,15 @@ export default function Products() {
                         className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
                       />
                       
-                      {/* Overlay Gradient */}
+
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
                       
-                      {/* Category Badge */}
+
                       <div className="absolute top-4 left-4 px-3 py-1 bg-black/70 backdrop-blur-sm border border-red-500/30 rounded-full text-red-400 text-xs font-semibold tracking-wider">
                         {product.category}
                       </div>
 
-                      {/* Hover Icon */}
+
                       <motion.div
                         className="absolute top-4 right-4 w-10 h-10 bg-red-600/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-target"
                         whileHover={{ scale: 1.1, rotate: 45 }}
@@ -210,11 +210,10 @@ export default function Products() {
                         <FiExternalLink className="w-5 h-5 text-white" />
                       </motion.div>
 
-                      {/* Corner Decoration */}
+
                       <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-br from-red-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
 
-                    {/* Content */}
                     <div className="p-6 space-y-4">
                       <div>
                         <h3 className="text-xl font-bold text-white group-hover:text-red-400 transition-colors duration-300 mb-2">
@@ -225,10 +224,10 @@ export default function Products() {
                         </p>
                       </div>
 
-                      {/* Divider */}
+
                       <div className="h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent"></div>
 
-                      {/* Action Button */}
+
                       <div className="flex items-center justify-between">
                         <span className="text-red-500 font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all duration-300 cursor-target">
                           View Details
@@ -251,19 +250,19 @@ export default function Products() {
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           ))}
-                        </div> */}
+                        </div> 
                       </div>
                     </div>
 
-                    {/* Bottom Glow */}
+
                     <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
                 </Link>
               </motion.div>
             ))}
-          </div>
+          </div> 
 
-          {/* Scroll Indicator */}
+
           <div className="flex justify-center gap-2 mt-8">
             {products.map((_, index) => (
               <div
@@ -272,7 +271,7 @@ export default function Products() {
               />
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* CTA Section */}
         <motion.div
@@ -283,8 +282,8 @@ export default function Products() {
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-8 bg-zinc-900/50 backdrop-blur-sm rounded-2xl border border-zinc-800/50">
             <div className="flex-1 text-left">
-              <p className="text-white text-lg font-semibold mb-1">Custom 3D Printing Solutions</p>
-              <p className="text-gray-400 text-sm">Need something unique? We bring your ideas to life</p>
+              <p className="text-white text-lg font-semibold mb-1">Customized drone and robotics for your requirements</p>
+              <p className="text-gray-400 text-sm">Solutions designed to address your specific problems and requirements.</p>
             </div>
             <button className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:scale-105 whitespace-nowrap cursor-target" onClick={() => router.push('/contact')}>
               Request Quote
