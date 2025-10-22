@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import TargetCursor from "./components/TargetCursor";
+import CursorWrapper from "./components/CursorWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Roberon",
-  description: "Roberon is a company that specializes in creating high-quality, innovative products that enhance the lives of our customers.",
+  description:
+    "Roberon is a company that specializes in creating high-quality, innovative products that enhance the lives of our customers.",
 };
 
 export default function RootLayout({
@@ -26,16 +27,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet"></link>
-      <link href="https://fonts.googleapis.com/css2?family=Iceland&family=Megrim&display=swap" rel="stylesheet"></link>
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <TargetCursor 
-        spinDuration={2}
-        hideDefaultCursor={true}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Megrim&display=swap"
+          rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Iceland&family=Megrim&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <CursorWrapper />
         {children}
       </body>
     </html>

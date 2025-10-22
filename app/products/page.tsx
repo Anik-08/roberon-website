@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import Navbar from '../../components/Navbar';
+import Navbar from '../components/Navbar';
 import { motion } from 'framer-motion';
-import TextPressure from '../../components/TextPressure';
+import TextPressure from "../components/TextPressure";
 
 export default function Events() {
     const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
@@ -153,7 +153,10 @@ export default function Events() {
                         <p className="text-xl md:text-2xl text-gray-400 mb-4">
                             Something Amazing is Being Built
                         </p>
-
+                        <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                             Our events section is under construction. Get ready for exciting robotics workshops, 
+                            AI seminars, drone racing competitions, and much more!
+                        </p>
                     </motion.div>
 
                 </div>

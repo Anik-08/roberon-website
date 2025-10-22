@@ -42,18 +42,7 @@ export default function Navbar() {
     }
     return `${baseClasses} text-gray-300 `;
   }
-  const handleTeams = () => {
-  if (pathname !== "/home") {
-    // Navigate to /home and add a hash for the section
-    router.push("/home#teams");
-  } else {
-    // Already on /home, just scroll to section
-    const el = document.getElementById("teams");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  }
-};
+
 
   // Mobile button classes
   const getMobileButtonClasses = (route) => {
@@ -86,6 +75,18 @@ export default function Navbar() {
             onClick={() => router.push('/teams')}
           >
             Team
+          </button>
+          <button 
+            className={getButtonClasses('/skill-dev', 'h-10 rounded-full cursor-target font-medium w-24 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
+            onClick={() => router.push('/skill-dev')}
+          >
+            Skill Dev
+          </button>
+          <button 
+            className={getButtonClasses('/products', 'h-10 rounded-full cursor-target font-medium w-24 text-md hover:scale-110 transition-all duration-300 ease-in-out')}
+            onClick={() => router.push('/products')}
+          >
+            Products
           </button>
         </div>
 
@@ -142,6 +143,24 @@ export default function Navbar() {
               }}
             >
               Team
+            </button>
+            <button 
+              className={getMobileButtonClasses('/skill-dev')}
+              onClick={() => {
+                router.push('/skill-dev');
+                setMenuOpen(false);
+              }}
+            >
+              Skill Dev
+            </button>
+            <button 
+              className={getMobileButtonClasses('/products')}
+              onClick={() => {
+                router.push('/products');
+                setMenuOpen(false);
+              }}
+            >
+              Products
             </button>
             <button 
               className={getMobileButtonClasses('/events')} 
