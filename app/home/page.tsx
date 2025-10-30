@@ -15,15 +15,16 @@ export default function HomePage() {
       <section id='hero' className="relative w-full -z-10">
         <HeroPage />
       </section>
+      <section id='products' className="-z-50">
+        <Products />
+      </section>
       <section id='services'>
         <Services />
       </section>
       {/* <section id='brands'>
         <Brands />
       </section> */}
-      <section id='products' className="-z-50">
-        <Products />
-      </section>
+
         <Footer />
     </main>
   );

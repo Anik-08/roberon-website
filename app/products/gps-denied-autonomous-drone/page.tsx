@@ -77,25 +77,13 @@ export default function Events() {
             {/* Wide-angle banner image or short looping video placeholder */}
             {/* Replace src and poster with production assets when available */}
             <div className="w-full h-64 sm:h-80 lg:h-96 bg-gray-900 relative">
-              <video
-                className="w-full h-full object-cover"
-                src="/media/drone-hero-loop.mp4"
-                poster="/media/drone-hero-poster.jpg"
-                loop
-                muted
-                playsInline
-                autoPlay
-                aria-label="Drone in flight demo video"
-              >
-                {/* Fallback image if video isn't supported */}
-                <Image
-                  src="/media/drone-hero-poster.jpg"
-                  alt="Wide-angle drone in flight - banner"
-                  width={100}
-                  height={100}
-                  className="w-full h-full object-cover"
-                />
-              </video>
+              <Image
+                src="/products/gps-drone.jpg"
+                alt="Wide-angle drone in flight - banner"
+                fill
+                className="object-cover"
+                priority
+              />
 
               <div className="absolute left-6 bottom-6 bg-black/50 px-4 py-2 rounded-md">
                 <span className="text-xs text-gray-200">Autonomy in GPS-denied environments</span>
@@ -123,32 +111,33 @@ export default function Events() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-              <figure className="bg-black/40 rounded-md p-3">
-                <Image
-                  src="/media/drone-closeup.jpg"
-                  alt="Close-up of drone sensors and compute module"
-                  width={100}
-                  height={100}
-                  className="w-full h-40 object-cover rounded-md"
-                />
-                <figcaption className="text-xs text-gray-400 mt-2">
-                  Close-up: sensors & compute module
-                </figcaption>
-              </figure>
+  <figure className="bg-black/40 rounded-md p-3 relative h-40">
+    <Image
+      src="/products/processor.jpg"
+      alt="Close-up of drone sensors and compute module"
+      fill
+      className="object-cover rounded-md"
+      priority
+    />
+    <figcaption className="text-xs text-gray-400 mt-2 absolute bottom-2 left-3 bg-black/60 px-2 py-1 rounded">
+      Close-up: sensors & compute module
+    </figcaption>
+  </figure>
 
-              <figure className="bg-black/40 rounded-md p-3">
-                <Image
-                  src="/media/drone-warehouse.jpg"
-                  alt="Drone operating in a warehouse — mapping environment"
-                  width={100}
-                  height={100}
-                  className="w-full h-40 object-cover rounded-md"
-                />
-                <figcaption className="text-xs text-gray-400 mt-2">
-                  Drone mapping a warehouse corridor
-                </figcaption>
-              </figure>
-            </div>
+  <figure className="bg-black/40 rounded-md p-3 relative h-40">
+    <Image
+      src="/products/connector.jpg"
+      alt="Drone operating in a warehouse — mapping environment"
+      fill
+      className="object-cover rounded-md"
+      priority
+    />
+    <figcaption className="text-xs text-gray-400 mt-2 absolute bottom-2 left-3 bg-black/60 px-2 py-1 rounded">
+      Drone mapping a warehouse corridor
+    </figcaption>
+  </figure>
+</div>
+
           </motion.div>
 
           {/* Quick Specs Panel */}
@@ -299,14 +288,16 @@ export default function Events() {
             <div className="bg-black/50 rounded-lg overflow-hidden border border-white/5">
               {/* Embedded demo video with SLAM overlays — replace src with production asset */}
               <video
-                src="/media/drone-demo.mp4"
+                src="/videos/gps-drone.mp4"
                 poster="/media/drone-demo-poster.jpg"
                 controls
+                muted
                 className="w-full h-72 lg:h-96 object-cover"
                 aria-label="Demo video showing autonomous mapping and obstacle navigation"
               >
                 Your browser does not support the video tag.
               </video>
+
               <div className="p-4">
                 <p className="text-gray-300">
                   Short demo: autonomous mapping, obstacle avoidance, and path replanning in a GPS-denied space.

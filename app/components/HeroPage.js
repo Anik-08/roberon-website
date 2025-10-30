@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { style } from 'framer-motion/client';
 
 const HeroPage = () => {
   const pathname = usePathname();
@@ -196,7 +197,7 @@ const HeroPage = () => {
             initial={{ x: -200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
-            className={` text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold iceland-regular`}
+            className={` text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold iceland-regular` } style={{fontFamily:'Telegraph'}}
           >
             {displayText1}
             {showCursor1 && (
@@ -224,7 +225,7 @@ const HeroPage = () => {
             initial={{ x: 200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
-            className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-right font-bold iceland-regular"
+            className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-right font-bold iceland-regular" style={{fontFamily: 'Telegraph'}}
           >
             {displayText2}
             {showCursor2 && (

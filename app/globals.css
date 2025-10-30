@@ -20,6 +20,9 @@
     transform: translateY(0);
   }
 }
+.telegraph-content {
+  font-family: 'Telegraph', sans-serif;
+}
 .megrim-regular {
   font-family: "Megrim", system-ui;
   font-weight: 400;
@@ -28,5 +31,11 @@
 .iceland-regular {
   font-family: "Iceland", sans-serif;
   font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Telegraph';
+  src: url('/fonts/telegraf/Telegraf UltraLight 200.otf') format('opentype');
+  font-weight: 200;
   font-style: normal;
 }

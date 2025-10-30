@@ -3,12 +3,14 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { IoIosArrowBack } from "react-icons/io";  
+import { IoIosArrowForward } from "react-icons/io";
 
 // Mock slide data with unique slugs
 const slides = [
   {
     id: 1,
-    slug: "gps-autonomous-drone-technology",
+    slug: "gps-denied-autonomous-drone",
     image: "/images/service1.jpg",
     heading: "GPS Autonomous denied drone",
     subheading: "Redefining the skies with intelligence and precision",
@@ -78,6 +80,17 @@ export default function Services() {
 
   const slide = slides[currentSlide];
 
+  // Navigation handlers
+  const goToNextSlide = () => {
+    setDirection(1);
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
+  const goToPreviousSlide = () => {
+    setDirection(-1);
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
   // Improved WhatsApp helper:
   // - Encodes message properly (including newlines)
   // - Attempts deep link (whatsapp://) on mobile, falls back to api.whatsapp.com
@@ -139,15 +152,59 @@ export default function Services() {
 
   // Specific handlers for Manufacturing & Production
   const handleSendDesignsWhatsApp = () => {
-    const phone = "917676454055";
-    const message = `Hello,\n\nI would like to send my designs for manufacturing (${slide.heading}). Please advise next steps.`;
-    openWhatsApp(phone, message);
+    const email = "sales@roberon.com";
+    const subject = "Sending design files";
+    const body = `Hello Roberon Team,
+
+Please share the following details along with your design file 
+
+Process required (3D Printing / CNC / Laser Cutting / Engraving / Lathe / Other): ________
+Part or Project Name: ________
+Quantity: ________
+Material: ________
+Finish (if any):
+Deadline or Delivery Date: ________
+
+Attach your design file (STL / STEP / DXF / PDF) and any reference image.
+
+Additional notes (optional): ________
+
+Thanks,
+[Your Name]`;
+    openMailTo(email, subject, body);
   };
 
   const handleOutsourceManufacturingEmail = () => {
     const email = "sales@roberon.com";
-    const subject = "Outsource Manufacturing Inquiry";
-    const body = `Hello Roberon Team,\n\nI am interested in outsourcing manufacturing for my design ("${slide.heading}"). Please share details on lead times, MOQ, pricing, and quoting process.\n\nThanks,\n[Your name]`;
+    const subject = "Outsource manufacturing inquiry";
+    const body = `Hello Roberon Team,
+
+I am interested in outsourcing manufacturing for my design. 
+
+Please provide us with these details:
+
+Part or Project Name: ________
+Quantity Required: ________
+Material Specification (e.g., Aluminum 6061, PLA+, Acrylic 3mm, etc.): ________
+Dimensions / Drawing / CAD File:
+  - File type (STL / STEP / DXF / PDF): attach
+  - Key dimensions or tolerances (if any): ________
+Surface Finish or Post-Processing: ________
+Deadline or Delivery Date: ________
+Assembly / Fit Notes: ________
+Contact Person:
+  - Name: ________
+  - Phone / WhatsApp: ________
+  - Email: ________
+
+Additional Notes / Instructions: ________
+
+Attachments: (add as needed)
+  - Drawing or CAD file
+  - Reference photo (if any)
+
+Thanks,
+[Your Name]`;
     openMailTo(email, subject, body);
   };
 
@@ -180,166 +237,195 @@ export default function Services() {
   return (
     <section className="w-full bg-black py-8 px-4 sm:py-12 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Main Container */}
-        <div
-          className="flex flex-col lg:flex-row rounded-2xl overflow-hidden bg-[#181818] shadow-2xl"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {/* Image Section */}
-          <div className="w-full lg:w-1/2 relative">
-            <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full">
-              <AnimatePresence initial={false} custom={direction}>
-                <motion.div
-                  key={slide.image}
-                  custom={direction}
-                  initial={{ opacity: 0, x: direction > 0 ? 100 : -100, scale: 1.05 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: direction > 0 ? -100 : 100, scale: 0.95 }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                  className="absolute inset-0"
-                >
-                  <Image src={slide.image} alt={slide.heading} fill className="object-cover" priority />
-                </motion.div>
-              </AnimatePresence>
+        {/* Main Container with Navigation Buttons */}
+        <div className="relative">
+          {/* Previous Button */}
+          <motion.button
+            onClick={goToPreviousSlide}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            whileHover={{ scale: 1.1, backgroundColor: "rgba(220, 38, 38, 0.9)" }}
+            whileTap={{ scale: 0.95 }}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 z-10 bg-red-600 text-white p-3 md:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-target"
+            aria-label="Previous slide"
+          >
+            <IoIosArrowBack className="w-5 h-5 md:w-6 md:h-6" />
+          </motion.button>
+
+          {/* Next Button */}
+          <motion.button
+            onClick={goToNextSlide}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            whileHover={{ scale: 1.1, backgroundColor: "rgba(220, 38, 38, 0.9)" }}
+            whileTap={{ scale: 0.95 }}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 z-10 bg-red-600 text-white p-3 md:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-target"
+            aria-label="Next slide"
+          >
+            <IoIosArrowForward className="w-5 h-5 md:w-6 md:h-6" />
+          </motion.button>
+
+          {/* Carousel Content */}
+          <div
+            className="flex flex-col lg:flex-row rounded-2xl overflow-hidden bg-[#181818] shadow-2xl"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Image Section */}
+            <div className="w-full lg:w-1/2 relative">
+              <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full">
+                <AnimatePresence initial={false} custom={direction}>
+                  <motion.div
+                    key={slide.image}
+                    custom={direction}
+                    initial={{ opacity: 0, x: direction > 0 ? 100 : -100, scale: 1.05 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    exit={{ opacity: 0, x: direction > 0 ? -100 : 100, scale: 0.95 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image src={slide.image} alt={slide.heading} fill className="object-cover" priority />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
-          </div>
 
-          {/* Content Section */}
-          <div className="w-full lg:w-1/2 relative">
-            <div className="p-6 sm:p-8 lg:p-12">
-              {/* Content */}
-              <AnimatePresence mode="wait">
-                <motion.div key={slide.heading} initial="hidden" animate="visible" exit="exit" className="text-center lg:text-left">
-                  <motion.p variants={textVariants} custom={0} className="text-base sm:text-lg text-gray-300 mb-2">
-                    {slide.subheading}
-                  </motion.p>
-                  <motion.h2 variants={textVariants} custom={1} className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-600 mb-4 sm:mb-6 leading-tight">
-                    {slide.heading}
-                  </motion.h2>
-                  <motion.p variants={textVariants} custom={2} className="text-base sm:text-md italic text-gray-300 mb-6 sm:mb-8">
-                    {slide.description}
-                  </motion.p>
+            {/* Content Section */}
+            <div className="w-full lg:w-1/2 relative">
+              <div className="p-6 sm:p-8 lg:p-12">
+                {/* Content */}
+                <AnimatePresence mode="wait">
+                  <motion.div key={slide.heading} initial="hidden" animate="visible" exit="exit" className="text-center lg:text-left">
+                    <motion.p variants={textVariants} custom={0} className="text-base sm:text-lg text-gray-300 mb-2">
+                      {slide.subheading}
+                    </motion.p>
+                    <motion.h2 variants={textVariants} custom={1} className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-600 mb-4 sm:mb-6 leading-tight">
+                      {slide.heading}
+                    </motion.h2>
+                    <motion.p variants={textVariants} custom={2} className="text-base sm:text-md italic text-gray-300 mb-6 sm:mb-8">
+                      {slide.description}
+                    </motion.p>
 
-                  {/* Conditional rendering for Manufacturing & Production (slide 3) */}
-                  {slide.slug === "manufacturing-production-services" ? (
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                    {/* Conditional rendering for Manufacturing & Production (slide 3) */}
+                    {slide.slug === "manufacturing-production-services" ? (
+                      <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                        <motion.button
+                          variants={textVariants}
+                          custom={3}
+                          onClick={handleSendDesignsWhatsApp}
+                          whileHover={{ scale: 1.03, boxShadow: "0px 6px 18px rgba(239,68,68,0.08)" }}
+                          whileTap={{ scale: 0.98 }}
+                          className="px-5 py-2 rounded-full bg-red-600 text-white text-sm font-semibold hover:bg-red-700 transition-colors cursor-target"
+                          aria-label="Send your designs via WhatsApp"
+                        >
+                          Send your designs
+                        </motion.button>
+
+                        <motion.button
+                          variants={textVariants}
+                          custom={4}
+                          onClick={handleOutsourceManufacturingEmail}
+                          whileHover={{ scale: 1.03, boxShadow: "0px 6px 18px rgba(239,68,68,0.04)" }}
+                          whileTap={{ scale: 0.98 }}
+                          className="px-5 py-2 rounded-full border-2 border-red-600 text-red-600 bg-transparent text-sm font-semibold hover:bg-red-600 hover:text-white transition-colors cursor-target"
+                          aria-label="Outsource manufacturing via Email"
+                        >
+                          Outsource Manufacturing
+                        </motion.button>
+                      </div>
+                    ) : slide.slug === "edtech-skill-development-programs" ? (
+                      // EdTech slide: render Courses + Materials (both route to /skill-dev)
+                      <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                        <motion.button
+                          variants={textVariants}
+                          custom={3}
+                          onClick={handleCoursesClick}
+                          whileHover={{ scale: 1.03, boxShadow: "0px 6px 18px rgba(239,68,68,0.08)" }}
+                          whileTap={{ scale: 0.98 }}
+                          className="px-5 py-2 rounded-full bg-red-600 text-white text-sm font-semibold hover:bg-red-700 transition-colors cursor-target"
+                          aria-label="Courses"
+                        >
+                          Courses
+                        </motion.button>
+
+                        <motion.button
+                          variants={textVariants}
+                          custom={4}
+                          onClick={handleMaterialsClick}
+                          whileHover={{ scale: 1.03, boxShadow: "0px 6px 18px rgba(239,68,68,0.04)" }}
+                          whileTap={{ scale: 0.98 }}
+                          className="px-5 py-2 rounded-full border-2 border-red-600 text-white bg-transparent text-sm font-semibold hover:bg-red-600 hover:border-red-300 transition-colors cursor-target"
+                          aria-label="Materials"
+                        >
+                          Materials
+                        </motion.button>
+                      </div>
+                    ) : (
                       <motion.button
                         variants={textVariants}
                         custom={3}
-                        onClick={handleSendDesignsWhatsApp}
-                        whileHover={{ scale: 1.03, boxShadow: "0px 6px 18px rgba(239,68,68,0.08)" }}
-                        whileTap={{ scale: 0.98 }}
-                        className="px-5 py-2 rounded-full bg-red-600 text-white text-sm font-semibold hover:bg-red-700 transition-colors cursor-target"
-                        aria-label="Send your designs via WhatsApp"
+                        onClick={handleServiceClick}
+                        whileHover={{ scale: 1.06, boxShadow: "0px 0px 15px rgba(239,68,68,0.12)" }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-red-600 text-white font-semibold text-base sm:text-lg hover:bg-red-700 transition-colors cursor-target"
                       >
-                        Send your designs
+                        {slide.buttonText}
                       </motion.button>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
 
+                {/* Slide Indicators and Play/Pause Status */}
+                <div className="flex justify-between items-center mt-8">
+                  {/* Slide Indicators */}
+                  <div className="flex space-x-2">
+                    {slides.map((_, index) => (
                       <motion.button
-                        variants={textVariants}
-                        custom={4}
-                        onClick={handleOutsourceManufacturingEmail}
-                        whileHover={{ scale: 1.03, boxShadow: "0px 6px 18px rgba(239,68,68,0.04)" }}
-                        whileTap={{ scale: 0.98 }}
-                        className="px-5 py-2 rounded-full border-2 border-red-600 text-red-600 bg-transparent text-sm font-semibold hover:bg-red-600 hover:text-white transition-colors cursor-target"
-                        aria-label="Outsource manufacturing via Email"
-                      >
-                        Outsource Manufacturing
-                      </motion.button>
-                    </div>
-                  ) : slide.slug === "edtech-skill-development-programs" ? (
-                    // EdTech slide: render Courses + Materials (both route to /skill-dev)
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                      <motion.button
-                        variants={textVariants}
-                        custom={3}
-                        onClick={handleCoursesClick}
-                        whileHover={{ scale: 1.03, boxShadow: "0px 6px 18px rgba(239,68,68,0.08)" }}
-                        whileTap={{ scale: 0.98 }}
-                        className="px-5 py-2 rounded-full bg-red-600 text-white text-sm font-semibold hover:bg-red-700 transition-colors cursor-target"
-                        aria-label="Courses"
-                      >
-                        Courses
-                      </motion.button>
+                        key={index}
+                        onClick={() => {
+                          setDirection(index > currentSlide ? 1 : -1);
+                          setCurrentSlide(index);
+                        }}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === index ? "w-6 bg-red-600" : "bg-gray-600"}`}
+                        whileHover={{ scale: 1.3 }}
+                        whileTap={{ scale: 0.9 }}
+                        aria-label={`Go to slide ${index + 1}`}
+                      />
+                    ))}
+                  </div>
 
-                      <motion.button
-                        variants={textVariants}
-                        custom={4}
-                        onClick={handleMaterialsClick}
-                        whileHover={{ scale: 1.03, boxShadow: "0px 6px 18px rgba(239,68,68,0.04)" }}
-                        whileTap={{ scale: 0.98 }}
-                        className="px-5 py-2 rounded-full border-2 border-red-600 text-white bg-transparent text-sm font-semibold hover:bg-red-600 hover:border-red-300 transition-colors cursor-target"
-                        aria-label="Materials"
-                      >
-                        Materials
-                      </motion.button>
-                    </div>
-                  ) : (
-                    <motion.button
-                      variants={textVariants}
-                      custom={3}
-                      onClick={handleServiceClick}
-                      whileHover={{ scale: 1.06, boxShadow: "0px 0px 15px rgba(239,68,68,0.12)" }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-red-600 text-white font-semibold text-base sm:text-lg hover:bg-red-700 transition-colors cursor-target"
-                    >
-                      {slide.buttonText}
-                    </motion.button>
-                  )}
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Slide Indicators and Play/Pause Status */}
-              <div className="flex justify-between items-center mt-8">
-                {/* Slide Indicators */}
-                <div className="flex space-x-2">
-                  {slides.map((_, index) => (
-                    <motion.button
-                      key={index}
-                      onClick={() => {
-                        setDirection(index > currentSlide ? 1 : -1);
-                        setCurrentSlide(index);
-                      }}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === index ? "w-6 bg-red-600" : "bg-gray-600"}`}
-                      whileHover={{ scale: 1.3 }}
-                      whileTap={{ scale: 0.9 }}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
-                </div>
-
-                {/* Play/Pause Status Indicator */}
-                <div className="flex items-center space-x-2">
-                  <AnimatePresence mode="wait">
-                    <motion.div key={isPaused ? "paused" : "playing"} variants={iconVariants} initial="hidden" animate="visible" exit="hidden" className="flex items-center space-x-1">
-                      {isPaused ? (
-                        <>
-                          {/* Pause Icon */}
-                          <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                              fillRule="evenodd"
-                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          <span className="text-sm text-yellow-400">Paused</span>
-                        </>
-                      ) : (
-                        <>
-                          {/* Play Icon */}
-                          <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                              fillRule="evenodd"
-                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          <span className="text-sm text-green-400">Playing</span>
-                        </>
-                      )}
-                    </motion.div>
-                  </AnimatePresence>
+                  {/* Play/Pause Status Indicator */}
+                  <div className="flex items-center space-x-2">
+                    <AnimatePresence mode="wait">
+                      <motion.div key={isPaused ? "paused" : "playing"} variants={iconVariants} initial="hidden" animate="visible" exit="hidden" className="flex items-center space-x-1">
+                        {isPaused ? (
+                          <>
+                            {/* Pause Icon */}
+                            <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path
+                                fillRule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            <span className="text-sm text-yellow-400">Paused</span>
+                          </>
+                        ) : (
+                          <>
+                            {/* Play Icon */}
+                            <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path
+                                fillRule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            <span className="text-sm text-green-400">Playing</span>
+                          </>
+                        )}
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
                 </div>
               </div>
             </div>
