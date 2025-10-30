@@ -11,7 +11,7 @@ const slides = [
   {
     id: 1,
     slug: "gps-denied-autonomous-drone",
-    image: "/images/service1.jpg",
+    image: "/products/gps-denied-drone.jpg",
     heading: "GPS Autonomous denied drone",
     subheading: "Redefining the skies with intelligence and precision",
     description:
